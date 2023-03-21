@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>y0ung.me - Password Generator</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="container">
+		<h1>Generator haseł</h1>
+		<label for="length">Długość hasła:</label>
+		<input type="number" id="length" min="8" max="64" value="8">
+		<button id="generate">Generuj hasło</button>
+		<div class="password" id="password"></div>
+	</div>
+
+	<script>
+		function genPas() {
+			const length = document.getElementById('length').value;
+			const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+{}[];:<>,.?/';
+			let password = '';
+			for (let i = 0; i < length; i++) {
+				password += characters.charAt(Math.floor(Math.random() * characters.length));
+			}
+			document.getElementById('password').textContent = password;
+		}
+
+		document.getElementById('generate').addEventListener('click', genPas);
+	</script>
+</body>
+</html>
